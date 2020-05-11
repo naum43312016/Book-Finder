@@ -1,0 +1,36 @@
+.book{
+    background: hsla(0,0%,100%,.7);
+    border: 1px solid #bdbdbd;
+    border-radius: 3px;
+    box-shadow: 0 1px rgba(0,0,0,.05);
+    margin-bottom: 10px;
+}
+.book-title{
+    padding: 5px 0 0 15px;
+}
+.book-title a{
+    text-decoration: none;
+    color: #6d4c41;
+}
+.book-title h2{
+    font-size: 17px;
+}
+
+.book-img-block{
+    width: 128px;
+    margin: 10px;
+}
+.book-img{
+    display: block;
+    width: 128px;
+    height: 198px;
+}
+.books-txt{
+    font-size: 14px;
+}
+.book-field{
+    margin-bottom: 5px;
+}
+.book{
+    margin-bottom: 10px;
+}

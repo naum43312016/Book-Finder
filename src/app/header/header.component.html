@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-auto logo-text">
+      <h1 class="text-of-logo">Book Finder</h1>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-6 search-input">
+      <div class="input-group mb-3">
+        <input type="text"
+         class="form-control"
+         [(ngModel)]="query"
+         placeholder="Type author, book name"
+          aria-label="Type author, book name"
+           aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-info"
+          [disabled]="query === ''"
+          type="button" (click)="onSearch()">Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

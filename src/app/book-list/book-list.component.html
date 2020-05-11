@@ -1,0 +1,88 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-6"
+    *ngFor="let item of data"
+    >
+      <div class="col-md-12 book">
+        <div class="book-title">
+          <h2>
+            <a href="{{item.volumeInfo.canonicalVolumeLink}}" target="_blank">
+              {{ (item.volumeInfo.title.length>50)? (item.volumeInfo.title | slice:0:50)+'..':(item.volumeInfo.title) }}
+            </a>
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-md-5 col-lg-4"
+          *ngIf="item.volumeInfo.imageLinks!==undefined && item.volumeInfo.imageLinks.smallThumbnail!==undefined;else bookimage"
+          >
+            <div class="book-img-block">
+              <img src="{{item.volumeInfo.imageLinks.smallThumbnail}}"
+              alt="Fahrenheit 451" class="book-img">
+            </div>
+          </div>
+          <ng-template #bookimage>
+            <div class="col-md-5 col-lg-4">
+            <div class="book-img-block">
+              <img src="../../assets/leather-book-preview.png"
+              alt="Fahrenheit 451" class="book-img">
+            </div>
+          </div>
+          </ng-template>
+          <div class="col-md-7 col-lg-8">
+            <div class="book-field books-txt" title="author"
+            *ngIf="item.volumeInfo.authors!==undefined">
+              <strong>Author:</strong>
+              {{item.volumeInfo.authors[0]}}
+            </div>
+            <div class="book-field books-txt"
+            *ngIf="item.volumeInfo.categories!==undefined">
+              <strong>Category:</strong>
+                {{item.volumeInfo.categories[0]}}
+            </div>
+            <div class="book-field books-txt"
+            *ngIf="item.volumeInfo.publisher!==undefined"
+            >
+              <strong>Publisher:</strong>
+              {{item.volumeInfo.publisher}}
+            </div>
+            <div class="book-field books-txt"
+            *ngIf="item.volumeInfo.description!==undefined">
+              <strong>Description:</strong>
+              {{ (item.volumeInfo.description.length>121)? (item.volumeInfo.description | slice:0:121)+'..':(item.volumeInfo.description) }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="Page navigation example"
+  *ngIf="data.length>0"
+  >
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled"
+      *ngIf="currPage<2; else elsePrev">
+        <button class="page-link" tabindex="-1">Previous</button>
+      </li>
+      <ng-template #elsePrev>
+        <li class="page-item">
+          <button class="page-link" (click)="prevPage()" tabindex="-1">Previous</button>
+        </li>
+      </ng-template>
+      <li class="page-item disabled"
+      *ngIf="currPage>=pages; else elseNext">
+        <button class="page-link" tabindex="-1">Next</button>
+      </li>
+      <ng-template #elseNext>
+        <li class="page-item">
+          <button class="page-link" (click)="nextPage()" tabindex="-1">Next</button>
+        </li>
+      </ng-template>
+    </ul>
+  </nav>
+  <br>
+</div>
